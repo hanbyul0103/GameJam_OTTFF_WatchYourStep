@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62232954}
   m_Layer: 0
-  m_Name: uUI
+  m_Name: '#UI'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1163,7 +1163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980465712}
   m_Layer: 0
-  m_Name: mMANAGERS
+  m_Name: '!MANAGERS'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2229,7 +2229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728162460}
   m_Layer: 0
-  m_Name: sSYSTEM
+  m_Name: $SYSTEM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2473,7 +2473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909647849}
   m_Layer: 0
-  m_Name: lLIGHTS
+  m_Name: '@LIGHTS'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2556,8 +2556,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "English\n\uD55C\uAE00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 91dc5a52cd9643741b221ee1e26b895f, type: 2}
-  m_sharedMaterial: {fileID: 3934110534975390454, guid: 91dc5a52cd9643741b221ee1e26b895f,
+  m_fontAsset: {fileID: 11400000, guid: 3850437b3a2b4fd40a5695d1a29e4580, type: 2}
+  m_sharedMaterial: {fileID: -5557896425907570452, guid: 3850437b3a2b4fd40a5695d1a29e4580,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
