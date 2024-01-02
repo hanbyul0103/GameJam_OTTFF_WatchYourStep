@@ -1013,6 +1013,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1649917329}
+    - target: {fileID: 3724167798984932657, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724167799004057748, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724167799004057748, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724167799004057748, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724167799004057748, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3724167799321586614, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1037,6 +1062,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724167799734152663, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3724167799737326833, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
         type: 3}
