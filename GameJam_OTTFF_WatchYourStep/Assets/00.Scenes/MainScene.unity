@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62232954}
   m_Layer: 0
-  m_Name: '#UI'
+  m_Name: uUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,8 +837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378265bc87521ea4fb067b040e250493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingPanel: {fileID: 0}
   _musicSlider: {fileID: 262504398}
   _sfxSlider: {fileID: 1303695980}
+  dotTime: 0.5
 --- !u!1 &451737664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980465712}
   m_Layer: 0
-  m_Name: '!MANAGERS'
+  m_Name: mMANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1530,7 +1532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds: []
-  sfxSounds: []
+  sfxSounds:
+  - name: Scream1
+    clip: {fileID: 8300000, guid: 4f2a98717d1ac0e439445afb6b76a8b7, type: 3}
+  - name: Scream2
+    clip: {fileID: 8300000, guid: cd3d9b6319b3f364a9b78f4638874a1e, type: 3}
   musicSource: {fileID: 1621263690}
   sfxSource: {fileID: 1204939483}
 --- !u!1 &1271600375
@@ -2229,7 +2235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728162460}
   m_Layer: 0
-  m_Name: $SYSTEM
+  m_Name: sSYSTEM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2473,7 +2479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909647849}
   m_Layer: 0
-  m_Name: '@LIGHTS'
+  m_Name: lLIGHTS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2556,8 +2562,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "English\n\uD55C\uAE00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3850437b3a2b4fd40a5695d1a29e4580, type: 2}
-  m_sharedMaterial: {fileID: -5557896425907570452, guid: 3850437b3a2b4fd40a5695d1a29e4580,
+  m_fontAsset: {fileID: 11400000, guid: 91dc5a52cd9643741b221ee1e26b895f, type: 2}
+  m_sharedMaterial: {fileID: 3934110534975390454, guid: 91dc5a52cd9643741b221ee1e26b895f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
