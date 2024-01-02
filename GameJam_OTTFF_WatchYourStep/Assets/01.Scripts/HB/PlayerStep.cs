@@ -14,7 +14,7 @@ public class PlayerStep : MonoBehaviour
 
     private void OnEnable()
     {
-
+        StepAction += StopAnimation;
     }
 
     private void Awake()
@@ -23,14 +23,14 @@ public class PlayerStep : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void StopAnimation()
-    {
-        animator.speed = 0;
-    }
-
     public void StepMethod()
     {
         StepAction?.Invoke();
+    }
+
+    public void StopAnimation()
+    {
+        animator.speed = 0;
     }
 
     private void OnDestroy()

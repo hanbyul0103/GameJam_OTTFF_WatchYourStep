@@ -9,6 +9,7 @@ public class CheckEnemy : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("Watch Your Step!");
+            PoolManager.Instance.Push("Enemy", other.gameObject);
         }
     }
 }
