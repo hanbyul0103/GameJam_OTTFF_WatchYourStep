@@ -1,5 +1,3 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=6D6875&height=150&section=header" />
-
 # <div align="center"> **Watch Your Step** </div>
 ## <div align="right"> Team. 하나둘셋넷다섯<br>게임잼 1/1 ~ 1/5</div> <div align="center">![image](https://github.com/hanbyul0103/GameJam_OTTFF_WatchYourStep/assets/123716081/7390f203-a58f-4c7f-9aee-af74ddffc84d)</div>
 ### <div align="center"> 안녕하세요👋 <br> 저희는 2023게임잼 팀 [하나둘셋넷다섯] 입니다. <br> 비록 짧은 기간동안 함께하는 팀이지만, 짧고 굵은 만남인 만큼!!! <br> 저희들의 실력을 마음껏 뽐내보겠습니다. <br> 부디 저희팀의 게임 많이 기대해주시길 바라며 <br> 저희 팀의 게임을 소개하겠습니다.🌟
@@ -83,5 +81,4 @@
    - 도시
    - 레이아웃: 건물, 잔디, 울타리
    - 게임이 진행되는 곳: 도로
-  
-<img src="https://capsule-render.vercel.app/api?type=waving&color=6D6875&height=150&section=footer" />
+ 
