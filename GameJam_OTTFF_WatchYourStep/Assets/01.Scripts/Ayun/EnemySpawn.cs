@@ -8,7 +8,10 @@ public class EnemySpawn : MonoBehaviour
 {
     private void Start()
     {
-        PopEnemy();
+        for (int i = 0; i < 10; i++)
+        {
+            PopEnemy();
+        }
     }
 
     private void PopEnemy()
