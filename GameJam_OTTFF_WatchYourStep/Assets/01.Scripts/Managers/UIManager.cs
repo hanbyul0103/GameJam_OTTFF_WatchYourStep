@@ -9,18 +9,58 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] Image settingPanel;
     [SerializeField] Image gameOverPanel;
+    [SerializeField] Sprite checkBox;
+    [SerializeField] Button bgmButton;
+    [SerializeField] Button sfxButton;
 
     public Slider _musicSlider, _sfxSlider;
+    Sprite originImg;
 
     public float dotTime = 0.5f;
 
+    private bool onBGM = true;
+    private bool onSFX = true;
+
+    private void Start()
+    {
+        originImg = bgmButton.image.sprite;
+    }
+
+    private void Update()
+    {
+        SFXVolume();
+        MusicVolume();
+    }
+
     public void ToggleMusic()
     {
+        if (onBGM)
+        {
+            bgmButton.image.sprite = checkBox;
+            onBGM = false;
+        }
+        else if(!onBGM)
+        {
+            bgmButton.image.sprite = originImg;
+            onBGM=true;
+        }
+            
         AudioManager.Instance.ToggleMusic();
     }
 
     public void ToggleSFX()
     {
+        if (onSFX)
+        {
+            sfxButton.image.sprite = checkBox;
+            onSFX = false;
+        }
+        else if(!onSFX)
+        {
+            sfxButton.image.sprite = originImg;
+            onSFX=true;
+        }
+
         AudioManager.Instance.ToggleSFX();
     }
 

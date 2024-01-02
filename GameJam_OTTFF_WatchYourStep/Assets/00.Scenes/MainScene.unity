@@ -2134,7 +2134,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds: []
-  sfxSounds: []
+  sfxSounds:
+  - name: BrokenCar1
+    clip: {fileID: 8300000, guid: aab6e771638e7784bb799a93cedc1015, type: 3}
+  - name: BrokenCar2
+    clip: {fileID: 8300000, guid: d4c4e8cc9cdd4d344ad22416c33a87a9, type: 3}
+  - name: BrokenHuman
+    clip: {fileID: 8300000, guid: 57d842c34de399246a2ada1ff5708b45, type: 3}
   musicSource: {fileID: 1621263690}
   sfxSource: {fileID: 1204939483}
 --- !u!1 &1260800499
