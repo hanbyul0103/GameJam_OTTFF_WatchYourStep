@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PoolingBase
   m_EditorClassIdentifier: 
   pairs:
-  - prefab: {fileID: 0}
-    prefabTypeName: ObjectName
-    poolCount: 1
+  - prefab: {fileID: 350940419191160995, guid: 9117d35493f89ae48bd8605ccd084f87, type: 3}
+    prefabTypeName: Enemy
+    poolCount: 10
