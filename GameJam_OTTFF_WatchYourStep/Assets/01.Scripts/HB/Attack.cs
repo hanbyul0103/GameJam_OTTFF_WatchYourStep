@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
     public IEnumerator RightColliderEnable()
     {
         rightFootCollider.enabled = true;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         rightFootCollider.enabled = false;
         Debug.Log("right foot attacked");
     }
@@ -20,7 +20,7 @@ public class Attack : MonoBehaviour
     public IEnumerator LeftColliderEnable()
     {
         leftFootCollider.enabled = true;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         leftFootCollider.enabled = false;
         Debug.Log("left foot attacked");
     }
