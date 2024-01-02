@@ -16,3 +16,27 @@ MonoBehaviour:
   - prefab: {fileID: 350940419191160995, guid: 9117d35493f89ae48bd8605ccd084f87, type: 3}
     prefabTypeName: Enemy
     poolCount: 10
+  - prefab: {fileID: 4793475195026812405, guid: 00e514175705f9c4c98f30efe2b2efdc,
+      type: 3}
+    prefabTypeName: 0
+    poolCount: 3
+  - prefab: {fileID: 4793475195026812405, guid: b4d000e7fe4c1e84cbbe9332eac1a760,
+      type: 3}
+    prefabTypeName: 1
+    poolCount: 3
+  - prefab: {fileID: 4793475195026812405, guid: 4c2db76f543e5ca41b6fb850c2789e87,
+      type: 3}
+    prefabTypeName: 2
+    poolCount: 3
+  - prefab: {fileID: 4793475195026812405, guid: 129efc49c99a5a84fb75c55efae94328,
+      type: 3}
+    prefabTypeName: 3
+    poolCount: 3
+  - prefab: {fileID: 4793475195026812405, guid: 1de70877e18b69541b7c38d230bd74fe,
+      type: 3}
+    prefabTypeName: 4
+    poolCount: 3
+  - prefab: {fileID: 4793475195026812405, guid: 85715b2fce519264bb05e22f7f9c44cb,
+      type: 3}
+    prefabTypeName: 5
+    poolCount: 3
