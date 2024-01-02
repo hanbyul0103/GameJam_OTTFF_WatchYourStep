@@ -46,7 +46,10 @@ public class EnemyAI : MonoBehaviour
         p2.transform.position = RandomVector();
 
         while (Vector3.Distance(p1.transform.position, p2.transform.position) < moveDistance)
-            RandomVector();
+        {
+            p1.transform.position = RandomVector();
+            p2.transform.position = RandomVector();
+        }
 
         points = new List<Transform>();
         points.Add(p1.transform);
