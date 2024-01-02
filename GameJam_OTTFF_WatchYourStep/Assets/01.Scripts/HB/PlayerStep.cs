@@ -14,7 +14,7 @@ public class PlayerStep : MonoBehaviour
 
     private void OnEnable()
     {
-        StepAction += () => Debug.Log("Step");
+
     }
 
     private void Awake()
@@ -31,5 +31,10 @@ public class PlayerStep : MonoBehaviour
     public void StepMethod()
     {
         StepAction?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        StepAction -= StopAnimation;
     }
 }
