@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 0}
-  settingPanelImg: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  checkBox: {fileID: 21300000, guid: ba741a58a7d6b344dbf4a3fbb5d19f3d, type: 3}
+  bgmButton: {fileID: 0}
+  sfxButton: {fileID: 0}
   _musicSlider: {fileID: 0}
   _sfxSlider: {fileID: 0}
   dotTime: 0.5
