@@ -26,12 +26,6 @@ public class UIManager : MonoBehaviour
         originImg = bgmButton.image.sprite;
     }
 
-    private void Update()
-    {
-        SFXVolume();
-        MusicVolume();
-    }
-
     public void ToggleMusic()
     {
         if (onBGM)

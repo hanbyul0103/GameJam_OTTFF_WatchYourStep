@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class Distance : MonoBehaviour
 {
-    private int distance;
+    private PlayerStep playerStep;
+
+    private int score = 0;
+    private int distance = 1;
     private int combo;
     private int multiply = 1;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (combo >= 10)
-        {
-            multiply = 2;
-        }
+        playerStep.StepAction += AddDistance;
+    }
 
-        else
-        {
-            multiply = 1;
-        }
+    private void Awake()
+    {
+        playerStep = FindObjectOfType<PlayerStep>();
     }
 
     private void CountCombo()
@@ -29,6 +29,12 @@ public class Distance : MonoBehaviour
 
     public void AddDistance()
     {
-        distance = distance * multiply;
+        score += distance * multiply;
+        Debug.Log($"score : {score}");
+    }
+
+    private void OnDestroy()
+    {
+        playerStep.StepAction -= AddDistance;
     }
 }
