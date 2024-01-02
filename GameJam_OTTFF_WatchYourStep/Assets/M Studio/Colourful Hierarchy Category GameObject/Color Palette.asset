@@ -17,24 +17,24 @@ MonoBehaviour:
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0.8784314, g: 0.24313723, b: 0.2957071, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
   - keyChar: '@'
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0.8862745, g: 0.5539556, b: 0.12941174, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
   - keyChar: '#'
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0.17429687, g: 0.9056604, b: 0.2237456, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
   - keyChar: $
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0.12941174, g: 0.3672905, b: 0.8862745, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
   - keyChar: '%'
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0.9245283, g: 0.9199929, b: 0.10815233, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1

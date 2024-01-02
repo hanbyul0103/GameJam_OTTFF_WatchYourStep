@@ -6,9 +6,9 @@ using TMPro;
 
 public class Distance : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreTxt;
-    [SerializeField] TextMeshProUGUI gameoverScoreTxt;
-    [SerializeField] TextMeshProUGUI bestScoreTxt;
+    [SerializeField] TextMeshProUGUI currenScoreText;
+    [SerializeField] TextMeshProUGUI bestScoreText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     private PlayerStep playerStep;
 
@@ -42,7 +42,7 @@ public class Distance : MonoBehaviour
     {
         score += distance * multiply;
         Debug.Log($"score : {score}");
-        scoreTxt.text = score.ToString();
+        currenScoreText.text = $"Step  :  {score.ToString("D3")}";
     }
 
     private void OnDestroy()
@@ -61,8 +61,8 @@ public class Distance : MonoBehaviour
 
     public void SetGameOver()
     {
-        gameoverScoreTxt.text = score.ToString();
+        scoreText.text = score.ToString("D3");
         CheckBestScore();
-        bestScoreTxt.text = bestScore.ToString();
+        bestScoreText.text = bestScore.ToString();
     }
 }
