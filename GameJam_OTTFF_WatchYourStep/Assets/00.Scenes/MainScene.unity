@@ -864,7 +864,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1107,6 +1107,7 @@ MonoBehaviour:
   bgmButton: {fileID: 5997817794055413567}
   sfxButton: {fileID: 5997817796127379295}
   titlePanelItems: []
+  narration: {fileID: 0}
   _musicSlider: {fileID: 5997817795651150064}
   _sfxSlider: {fileID: 5997817795670441410}
   dotTime: 0.5
@@ -2229,14 +2230,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753b31cf2c3069e47a3189ba38d7abe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
+  musicSounds:
+  - name: BGMSound
+    clip: {fileID: 8300000, guid: 9446e7db85763244aae097aeceaae9ca, type: 3}
+  - name: BGMCitySound
+    clip: {fileID: 8300000, guid: 55a371403e8694b41982d9df96194940, type: 3}
   sfxSounds:
-  - name: BrokenCar1
-    clip: {fileID: 8300000, guid: aab6e771638e7784bb799a93cedc1015, type: 3}
-  - name: BrokenCar2
-    clip: {fileID: 8300000, guid: d4c4e8cc9cdd4d344ad22416c33a87a9, type: 3}
-  - name: BrokenHuman
+  - name: HumanBrokenSound
     clip: {fileID: 8300000, guid: 57d842c34de399246a2ada1ff5708b45, type: 3}
+  - name: WalkingSound
+    clip: {fileID: 8300000, guid: f0390f4f43125c34e94b6f0e85eaee29, type: 3}
+  - name: ScreamSound
+    clip: {fileID: 8300000, guid: 4f2a98717d1ac0e439445afb6b76a8b7, type: 3}
+  - name: GameOverSound
+    clip: {fileID: 8300000, guid: 012c6de3153bb12488432666ebcc9d34, type: 3}
   musicSource: {fileID: 1621263690}
   sfxSource: {fileID: 1204939483}
 --- !u!1 &1260800499
