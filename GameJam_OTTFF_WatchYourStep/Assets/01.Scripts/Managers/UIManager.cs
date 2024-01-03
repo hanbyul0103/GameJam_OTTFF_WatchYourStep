@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     private Button sfxButton;
     [SerializeField]
     private List<Image> titlePanelItems = new List<Image>();
+    [SerializeField] 
+    private TextMeshProUGUI narration;
 
     public Slider _musicSlider, _sfxSlider;
 
@@ -149,6 +151,7 @@ public class UIManager : MonoBehaviour
     public void OnGameOver() // 게임오버 오픈
     {
         gameOverPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
+        RandomNarrationText();
     }
 
     public void OffGameOver() // 게임오버 끄기
@@ -196,5 +199,16 @@ public class UIManager : MonoBehaviour
 
         touchText.DOFade(0, 1);
         startButton.gameObject.SetActive(false);
+    }
+
+    private void RandomNarrationText()
+    {
+        string[] narrations =
+            { "살려줘", "무거워", "나 먼저 갈게",
+            "밍밍밍", "ㅠㅡㅠ", "너가 뭔데 날 죽여",
+            "꽥", "내가 죽었다니...", "이 나쁜 거인...", "힝...ㅠㅡㅠ" };
+        int rd = Random.Range(0, narrations.Length);
+
+        narration.text = narrations[rd];
     }
 }
