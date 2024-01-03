@@ -78,9 +78,9 @@ public class ScoreManager : MonoBehaviour
 
     public void SetGameOver()
     {
-        scoreText.text = currentScore.ToString("D3");
+        scoreText.text = currentScore.ToString();
         CheckBestScore();
-        bestScoreText.text = bestScore.ToString("D3");
+        bestScoreText.text = bestScore.ToString();
     }
 
     private void OnDestroy()

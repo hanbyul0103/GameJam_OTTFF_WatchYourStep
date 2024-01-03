@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         isGameStart = true;
-        AudioManager.Instance.PlayMusic("Theme");
     }
 
     public void GameOver()
@@ -38,8 +37,6 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.OnGameOver();
         UIManager.Instance.OffInGamePanel();
         ScoreManager.Instance.SetGameOver();
-
-        AudioManager.Instance.musicSource.Stop();
     }
 
     public void GameStartRoutine()

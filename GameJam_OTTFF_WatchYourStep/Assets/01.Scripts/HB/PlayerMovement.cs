@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     private PlayerStep playerStep;
+    public Transform playerOriginTransform;
+
 
     private float movementSpeed = 20.0f;
 
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerStep = FindObjectOfType<PlayerStep>();
+        playerOriginTransform = GameObject.Find("PlayerOriginPosition").GetComponent<Transform>();
     }
 
     private void Update()
