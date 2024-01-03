@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     public Action<Vector3> onMovingPosition;
 
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private float roamingDirChangeTime = 5f;
     private float randRoamingTime;
 
@@ -49,7 +50,12 @@ public class EnemyAI : MonoBehaviour
             roamingPosition = GetRoamingPosition();
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
+        {
+            if (hit.transform.gameObject.layer == enemyLayer)
+                return;
+
             roamingPosition = GetRoamingPosition();
+        }
     }
 
     Vector3 GetRoamingPosition()
