@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerMovement>();
     }
 
-    private void Update()
+    private void Start()
     {
-
+        MapManager.Instance.Starting();
     }
 
     public void GameStart()

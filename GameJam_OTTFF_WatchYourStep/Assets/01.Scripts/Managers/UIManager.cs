@@ -131,6 +131,8 @@ public class UIManager : MonoBehaviour
         player.transform.position = player.playerOriginTransform.position;
         OffGameOver();
         OnTitlePanel();
+        MapManager.Instance.Resetting();
+        MapManager.Instance.Starting();
     }
 
     public void RestartButton() // 게임 재시작
@@ -140,6 +142,8 @@ public class UIManager : MonoBehaviour
         player.transform.position = player.playerOriginTransform.position;
         OffGameOver();
         OnInGamePanel();
+        MapManager.Instance.Resetting();
+        MapManager.Instance.Starting();
     }
 
     public void OnGameOver() // 게임오버 오픈

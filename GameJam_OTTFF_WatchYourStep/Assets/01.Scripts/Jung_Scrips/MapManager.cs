@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    public static MapManager Instance;
+
     public List<GameObject> map = new List<GameObject>();
     public List<Transform> backMap = new List<Transform>();
 
@@ -19,15 +21,6 @@ public class MapManager : MonoBehaviour
     private int setting = 0;
     private int bgmoveto = 480;
     private int groundmoveTo = 0;
-
-    private static MapManager instance;
-    public static MapManager Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
 
     private GameObject _currentMap;
 
@@ -44,16 +37,11 @@ public class MapManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-            instance = this;
+            Instance = this;
         else
             Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
-
     }
-    private void Start()
-    {
-    }
+
     public void RandomMap()
     {
         ++count;
@@ -75,13 +63,6 @@ public class MapManager : MonoBehaviour
         PoolManager.Instance.Pop(map[rand].name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
 
         groundmoveTo -= 60;
-
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1)) Starting();
-        if (Input.GetMouseButtonDown(0)) Resetting();
 
     }
 
