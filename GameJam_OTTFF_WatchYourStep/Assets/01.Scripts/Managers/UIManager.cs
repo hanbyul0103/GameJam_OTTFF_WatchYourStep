@@ -76,11 +76,13 @@ public class UIManager : MonoBehaviour
         {
             bgmButton.image.sprite = checkBox;
             onBGM = false;
+            Debug.Log("Off bgm");
         }
         else if (!onBGM)
         {
             bgmButton.image.sprite = originImg;
             onBGM = true;
+            Debug.Log("On bgm");
         }
 
         AudioManager.Instance.ToggleMusic();
@@ -92,11 +94,13 @@ public class UIManager : MonoBehaviour
         {
             sfxButton.image.sprite = checkBox;
             onSFX = false;
+            Debug.Log("Off sfx");
         }
         else if (!onSFX)
         {
             sfxButton.image.sprite = originImg;
             onSFX = true;
+            Debug.Log("On sfx");
         }
 
         AudioManager.Instance.ToggleSFX();
