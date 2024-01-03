@@ -12,6 +12,8 @@ public class MapManager : MonoBehaviour
     public List<GameObject> map = new List<GameObject>();
     public List<Transform> backMap = new List<Transform>();
 
+    private GameObject[] activemaps;
+
     private int rand = 0;
     private int count = 0;
     private int setting = 0;
@@ -51,12 +53,6 @@ public class MapManager : MonoBehaviour
     }
     private void Start()
     {
-        for (int i = 0; i < map.Count; i++)
-        {
-            rand = UnityEngine.Random.Range(0, map.Count);
-            PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
-            groundmoveTo -= 60;
-        }
     }
     public void RandomMap()
     {
@@ -80,6 +76,33 @@ public class MapManager : MonoBehaviour
 
         groundmoveTo -= 60;
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1)) Starting();
+        if (Input.GetMouseButtonDown(0)) Resetting();
 
     }
+
+    public void Starting()
+    {
+        groundmoveTo = 0;
+        for (int i = 0; i < map.Count; i++)
+        {
+            rand = UnityEngine.Random.Range(0, map.Count);
+            PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
+            groundmoveTo -= 60;
+        }
+    }
+    public void Resetting()
+    {
+        activemaps = GameObject.FindGameObjectsWithTag("Map");
+        
+        for(int i =0; i <activemaps.Length;i++)
+        {
+            if (activemaps[i].activeInHierarchy == true)
+            PoolManager.Instance.Push(activemaps[i].name, activemaps[i]);
+        }
+    } 
 }
