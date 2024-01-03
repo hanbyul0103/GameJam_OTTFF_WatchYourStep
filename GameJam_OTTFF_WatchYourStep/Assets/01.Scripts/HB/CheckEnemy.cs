@@ -10,6 +10,7 @@ public class CheckEnemy : MonoBehaviour
         {
             Debug.Log("Watch Your Step!");
             PoolManager.Instance.Push("Enemy", other.gameObject);
+            GameManager.Instance.GameOver();
         }
     }
 }

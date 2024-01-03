@@ -18,9 +18,7 @@ public class EnemyAI : MonoBehaviour
     private float randRoamingTime;
 
     private RaycastHit hit;
-    private float maxDistance = 7f;
-    private string mapName;
-    private bool isSaveName;
+    private float maxDistance = 3f;
 
     private State currentState;
     private Vector3 roamingPosition;
@@ -38,16 +36,6 @@ public class EnemyAI : MonoBehaviour
         if (currentState == State.Death) return;
 
         Roaming();
-
-        if (isSaveName) return;
-
-        Debug.DrawRay(transform.position, Vector3.down * maxDistance, Color.blue, 0.3f);
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, maxDistance))
-        {
-            mapName = hit.collider.gameObject.name;
-            Debug.Log("map ÀÌ¸§ : " + mapName);
-            isSaveName = true;
-        }
     }
 
     private void Roaming()
@@ -58,6 +46,9 @@ public class EnemyAI : MonoBehaviour
         this.transform.rotation = Quaternion.LookRotation(roamingPosition);
 
         if (timeRoaming > roamingDirChangeTime)
+            roamingPosition = GetRoamingPosition();
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
             roamingPosition = GetRoamingPosition();
     }
 

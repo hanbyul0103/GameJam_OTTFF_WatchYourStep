@@ -32,9 +32,9 @@ public class EnemyPathFinding : MonoBehaviour
         randSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        rigid.velocity = moveDir * randSpeed;
+        transform.position += moveDir * randSpeed * Time.deltaTime;
     }
 
     void MoveTo(Vector3 targetPosition)

@@ -6,18 +6,23 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    private PlayerMovement player;
+
     public bool isGameStart = false;
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-
         else
             Destroy(gameObject);
+
+        player = FindObjectOfType<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+
     }
 
     public void GameStart()
@@ -28,6 +33,26 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        player.animator.SetBool("isGameStart", false);
+        isGameStart = false;
+        UIManager.Instance.OnGameOver();
+        UIManager.Instance.OffInGamePanel();
+        ScoreManager.Instance.SetGameOver();
+
         AudioManager.Instance.musicSource.Stop();
+    }
+
+    public void GameStartRoutine()
+    {
+        StartCoroutine(StartGame());
+    }
+
+    private IEnumerator StartGame()
+    {
+        UIManager.Instance.OffTitlePanel();
+        UIManager.Instance.OnInGamePanel();
+        CameraManager.Instance.FollowingCamera();
+        yield return new WaitForSeconds(0.3f);
+        isGameStart = true;
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    private void Start()
+    private void OnEnable()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             PopEnemy();
         }

@@ -1549,7 +1549,7 @@ GameObject:
   - component: {fileID: 5039658931285693283}
   m_Layer: 0
   m_Name: Enemy_Prefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1603,7 +1603,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5673312548730489308}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.6
   m_Height: 2.1
