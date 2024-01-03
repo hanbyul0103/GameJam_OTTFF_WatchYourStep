@@ -1010,7 +1010,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2675,6 +2675,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724167798921032509, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3724167798984932657, guid: 73b1eeafcd4456d44b693b3fdc085dd3,
         type: 3}

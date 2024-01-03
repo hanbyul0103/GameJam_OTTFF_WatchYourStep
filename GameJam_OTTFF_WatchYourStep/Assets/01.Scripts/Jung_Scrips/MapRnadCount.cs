@@ -9,8 +9,8 @@ public class MapRnadCount : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            JUNG_MapManage.Instance.SettingMap();
-            transform.position -= new Vector3( 480 , 0, 0) ;
+            GameObject mapObj = MapManager.Instance.RandomMap();
+            PoolManager.Instance.Push(gameObject.ToString(), gameObject);
         }
     }
 }
