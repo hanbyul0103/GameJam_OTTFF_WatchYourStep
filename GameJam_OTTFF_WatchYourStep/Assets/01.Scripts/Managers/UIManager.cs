@@ -1,6 +1,8 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,21 +10,28 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     [SerializeField]
     private Sprite checkBox;
     [SerializeField]
     private Button bgmButton;
     [SerializeField]
     private Button sfxButton;
+    [SerializeField]
+    private List<Image> titlePanelItems = new List<Image>();
 
     public Slider _musicSlider, _sfxSlider;
 
     public float dotTime = 0.5f;
 
+    private RectTransform titlePanel;
     private RectTransform settingPanel;
     private RectTransform gameOverPanel;
     private RectTransform ingamePanel;
     private RectTransform explainPanel;
+    private RectTransform startButton;
+    private TextMeshProUGUI touchText;
     private Sprite originImg;
 
     private bool onBGM = true;
@@ -30,10 +39,21 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        titlePanel = GameObject.Find("TitlePanel").GetComponent<RectTransform>();
         settingPanel = GameObject.Find("SettingPanel").GetComponent<RectTransform>();
         gameOverPanel = GameObject.Find("GameOverPanel").GetComponent<RectTransform>();
         ingamePanel = GameObject.Find("GamePlayPanel").GetComponent<RectTransform>();
         explainPanel = GameObject.Find("ExpainPanel").GetComponent<RectTransform>();
+        startButton = GameObject.Find("Panel").GetComponent<RectTransform>();
+        touchText = GameObject.Find("TouchText").GetComponent<TextMeshProUGUI>();
+
+        titlePanelItems = titlePanel.GetComponentsInChildren<Image>().ToList();
+        titlePanelItems.RemoveAt(0);
     }
 
     private void Start()
@@ -42,7 +62,7 @@ public class UIManager : MonoBehaviour
 
         settingPanel.DOScale(0, 0);
         gameOverPanel.DOScale(0, 0);
-        ingamePanel.gameObject.SetActive(false);
+        ingamePanel.DOScale(0, 0);
     }
 
     public void ToggleMusic()
@@ -105,11 +125,15 @@ public class UIManager : MonoBehaviour
     public void HomeButton() // 타이틀 화면으로 이동
     {
         CameraManager.Instance.TitleCamera();
+        OffGameOver();
+        OnTitlePanel();
     }
 
     public void RestartButton() // 게임 재시작
     {
-        CameraManager.Instance.IngameCamera();
+        CameraManager.Instance.FollowingCamera();
+        OffGameOver();
+        OnInGamePanel();
     }
 
     public void OnGameOver() // 게임오버 오픈
@@ -140,5 +164,27 @@ public class UIManager : MonoBehaviour
     public void OffExplainPanel()
     {
         explainPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
+    }
+
+    public void OnTitlePanel()
+    {
+        foreach (var item in titlePanelItems)
+        {
+            item.DOFade(1, 1);
+        }
+
+        touchText.DOFade(1, 1);
+        startButton.gameObject.SetActive(true);
+    }
+
+    public void OffTitlePanel()
+    {
+        foreach (var item in titlePanelItems)
+        {
+            item.DOFade(0, 1);
+        }
+
+        touchText.DOFade(0, 1);
+        startButton.gameObject.SetActive(false);
     }
 }

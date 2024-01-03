@@ -14,7 +14,6 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
-
     private void PopEnemy()
     {
         PoolManager.Instance.Pop("Enemy", transform);
