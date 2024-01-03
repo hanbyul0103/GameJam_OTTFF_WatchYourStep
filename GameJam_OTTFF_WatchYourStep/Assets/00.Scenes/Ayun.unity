@@ -12746,11 +12746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6db9306ee0e124ba05c95797d65de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgobj:
-  - {fileID: 1394564159}
-  - {fileID: 231053956}
-  groundobj: []
-  privateTrm: []
+  map: []
   count: 0
 --- !u!4 &806745179
 Transform:
@@ -16199,7 +16195,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &1048459969
 Transform:
