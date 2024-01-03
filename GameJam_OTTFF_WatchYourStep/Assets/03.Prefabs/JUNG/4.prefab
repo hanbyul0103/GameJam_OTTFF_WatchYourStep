@@ -1269,7 +1269,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4793475195026812404}
   - component: {fileID: 4793475195026812407}
-  - component: {fileID: 4793475195026812406}
+  - component: {fileID: 6791666886878858625}
+  - component: {fileID: 3127613233863813066}
   m_Layer: 0
   m_Name: 4
   m_TagString: Map
@@ -1336,18 +1337,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 60, y: 50, z: 55}
   m_Center: {x: -120, y: 10, z: 0}
---- !u!114 &4793475195026812406
-MonoBehaviour:
+--- !u!65 &6791666886878858625
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4793475195026812405}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ec63799ab6c954a853fc28f0e1f05d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 60, y: 10, z: 1}
+  m_Center: {x: 0, y: 5, z: -3.3}
+--- !u!65 &3127613233863813066
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793475195026812405}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 10, z: 1}
+  m_Center: {x: 0, y: 5, z: -24.4}
 --- !u!1 &5003256769132599060
 GameObject:
   m_ObjectHideFlags: 0
