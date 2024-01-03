@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         if (timeRoaming > roamingDirChangeTime)
             roamingPosition = GetRoamingPosition();
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, maxDistance))
         {
             if (hit.transform.gameObject.layer == enemyLayer)
                 return;
