@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class MapRnadCount : MonoBehaviour
 {
-    
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Map"))
         {
-            GameObject mapObj = MapManager.Instance.RandomMap();
-            PoolManager.Instance.Push(gameObject.ToString(), gameObject);
+            PoolManager.Instance.Push(other.gameObject.name, other.gameObject);
+            MapManager.Instance.RandomMap();
         }
     }
 }

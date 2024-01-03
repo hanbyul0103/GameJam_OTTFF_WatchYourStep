@@ -1,17 +1,22 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class MapManager : MonoBehaviour
 {
     public List<GameObject> map = new List<GameObject>();
+    public List<Transform> backMap = new List<Transform>();
 
     private int rand = 0;
     private int count = 0;
-    private int moveTo = 0;
+    private int setting = 0;
+    private int bgmoveto = 480;
+    private int groundmoveTo = 0;
 
     private static MapManager instance;
     public static MapManager Instance
@@ -30,7 +35,7 @@ public class MapManager : MonoBehaviour
         set
         {
             _currentMap = value;
-            _currentMap.transform.position = new Vector3(moveTo, 0, -7);
+            _currentMap.transform.position = new Vector3(groundmoveTo, 0, -7);
         }
     }
 
@@ -48,16 +53,33 @@ public class MapManager : MonoBehaviour
     {
         for (int i = 0; i < map.Count; i++)
         {
-            rand = Random.Range(0, map.Count);
-            PoolManager.Instance.Pop(map[rand].ToString(), new Vector3(moveTo, 0, -7), Quaternion.identity);
-            moveTo-= 60;    
+            rand = UnityEngine.Random.Range(0, map.Count);
+            PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
+            groundmoveTo -= 60;
         }
     }
-    public GameObject RandomMap()
+    public void RandomMap()
     {
-        PoolManager.Instance.Pop(map[Random.Range(0, map.Count)].ToString(), new Vector3(moveTo, 0, -7), Quaternion.identity);
-        /*Instantiate(map[Random.Range(0, map.Count)], new Vector3(moveTo, 0, -7), Quaternion.identity);*/
-        moveTo -= 60;
-        return CurrentMap;
+        ++count;
+        if (count == 4)
+        {
+            count = 0;
+            if (setting == 0)
+            {
+                backMap[setting].position -= new Vector3(bgmoveto, 0, 0);
+                ++setting;
+            }
+            else if (setting == 1)
+            {
+                backMap[setting].position -= new Vector3(bgmoveto, 0, 0);
+                --setting;
+            }
+        }
+        rand = UnityEngine.Random.Range(0, map.Count);
+        PoolManager.Instance.Pop(map[rand].name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
+
+        groundmoveTo -= 60;
+
+
     }
 }
