@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     private RectTransform startButton;
     private TextMeshProUGUI touchText;
     private Sprite originImg;
+    private PlayerMovement player;
 
     private bool onBGM = true;
     private bool onSFX = true;
@@ -51,6 +52,7 @@ public class UIManager : MonoBehaviour
         explainPanel = GameObject.Find("ExpainPanel").GetComponent<RectTransform>();
         startButton = GameObject.Find("Panel").GetComponent<RectTransform>();
         touchText = GameObject.Find("TouchText").GetComponent<TextMeshProUGUI>();
+        player = FindObjectOfType<PlayerMovement>();
 
         titlePanelItems = titlePanel.GetComponentsInChildren<Image>().ToList();
         titlePanelItems.RemoveAt(0);
@@ -63,6 +65,7 @@ public class UIManager : MonoBehaviour
         settingPanel.DOScale(0, 0);
         gameOverPanel.DOScale(0, 0);
         ingamePanel.DOScale(0, 0);
+        explainPanel.DOScale(0, 0);
     }
 
     public void ToggleMusic()
@@ -125,15 +128,22 @@ public class UIManager : MonoBehaviour
     public void HomeButton() // 타이틀 화면으로 이동
     {
         CameraManager.Instance.TitleCamera();
+        player.transform.position = player.playerOriginTransform.position;
         OffGameOver();
         OnTitlePanel();
+        MapManager.Instance.Resetting();
+        MapManager.Instance.Starting();
     }
 
     public void RestartButton() // 게임 재시작
     {
         CameraManager.Instance.FollowingCamera();
+        GameManager.Instance.GameStart();
+        player.transform.position = player.playerOriginTransform.position;
         OffGameOver();
         OnInGamePanel();
+        MapManager.Instance.Resetting();
+        MapManager.Instance.Starting();
     }
 
     public void OnGameOver() // 게임오버 오픈

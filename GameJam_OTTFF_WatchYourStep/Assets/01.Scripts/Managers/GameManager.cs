@@ -20,15 +20,14 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerMovement>();
     }
 
-    private void Update()
+    private void Start()
     {
-
+        MapManager.Instance.Starting();
     }
 
     public void GameStart()
     {
         isGameStart = true;
-        AudioManager.Instance.PlayMusic("Theme");
     }
 
     public void GameOver()
@@ -38,8 +37,6 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.OnGameOver();
         UIManager.Instance.OffInGamePanel();
         ScoreManager.Instance.SetGameOver();
-
-        AudioManager.Instance.musicSource.Stop();
     }
 
     public void GameStartRoutine()
