@@ -13,14 +13,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.isGameStart) return;
+
         if (Input.GetMouseButtonDown(0))
         {
-            animator.speed = 3;
+            animator.speed = 1;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            animator.speed = 0.6f;
+            animator.speed = 0.3f;
         }
     }
 }
