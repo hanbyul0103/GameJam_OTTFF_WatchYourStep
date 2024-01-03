@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     private RectTransform settingPanel;
     private RectTransform gameOverPanel;
     private RectTransform ingamePanel;
+    private RectTransform explainPanel;
     private Sprite originImg;
 
     private bool onBGM = true;
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
         settingPanel = GameObject.Find("SettingPanel").GetComponent<RectTransform>();
         gameOverPanel = GameObject.Find("GameOverPanel").GetComponent<RectTransform>();
         ingamePanel = GameObject.Find("GamePlayPanel").GetComponent<RectTransform>();
+        explainPanel = GameObject.Find("ExpainPanel").GetComponent<RectTransform>();
     }
 
     private void Start()
@@ -128,5 +130,15 @@ public class UIManager : MonoBehaviour
     public void OffInGamePanel()
     {
         ingamePanel.DOScale(0, dotTime).SetEase(Ease.InSine);
+    }
+
+    public void OnExplainPanel()
+    {
+        explainPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
+    }
+
+    public void OffExplainPanel()
+    {
+        explainPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
     }
 }
