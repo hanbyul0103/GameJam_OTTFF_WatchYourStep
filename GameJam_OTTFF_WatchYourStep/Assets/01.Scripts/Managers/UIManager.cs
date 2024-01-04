@@ -1,16 +1,18 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+
+    public Action onEnemySpawn;
 
     [SerializeField]
     private Sprite checkBox;
@@ -23,7 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI narration;
 
-    public Slider _musicSlider, _sfxSlider ,_penaltySlider ;
+    public Slider _musicSlider, _sfxSlider, _penaltySlider;
 
     public float dotTime = 0.5f;
 
@@ -62,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
+
         originImg = bgmButton.image.sprite;
         settingPanel.DOScale(0, 0);
         gameOverPanel.DOScale(0, 0);
@@ -150,6 +152,8 @@ public class UIManager : MonoBehaviour
 
     public void RestartButton() // 게임 재시작
     {
+        onEnemySpawn?.Invoke();
+
         CameraManager.Instance.FollowingCamera();
         GameManager.Instance.GameStart();
         ScoreManager.Instance.ResetScore();
@@ -248,9 +252,10 @@ public class UIManager : MonoBehaviour
         StopAllCoroutines();
         _penaltySlider.gameObject.SetActive(false);
     }
+
     IEnumerator Penalting()
     {
-        while(_penaltySlider.value!=0)
+        while (_penaltySlider.value != 0)
         {
             _penaltySlider.value -= Time.deltaTime;
             yield return null;

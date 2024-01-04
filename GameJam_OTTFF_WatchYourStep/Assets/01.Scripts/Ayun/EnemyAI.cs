@@ -25,11 +25,11 @@ public class EnemyAI : MonoBehaviour
     private State currentState;
     private Vector3 roamingPosition;
     private float timeRoaming;
-
-
+        
     private void Start()
     {
         GameManager.Instance.onEnemySpawn += Push;
+        UIManager.Instance.onEnemySpawn += Push;
 
         roamingPosition = GetRoamingPosition();
 
@@ -39,6 +39,7 @@ public class EnemyAI : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.onEnemySpawn -= Push;
+        UIManager.Instance.onEnemySpawn -= Push;
     }
 
     private void Push()
