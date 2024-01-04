@@ -68,12 +68,12 @@ public class MapManager : MonoBehaviour
 
     public void Starting()
     {
-        groundmoveTo = 0;
+        groundmoveTo = -15;
         for (int i = 0; i < map.Count; i++)
         {
             rand = UnityEngine.Random.Range(0, map.Count);
-            PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
-            groundmoveTo -= 60;
+            PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
+            groundmoveTo -= 90;
         }
     }
     public void Resetting()
