@@ -42,11 +42,17 @@ public class GameManager : MonoBehaviour
         isGameStart = false;
         UIManager.Instance.OnGameOver();
         UIManager.Instance.OffInGamePanel();
+        UIManager.Instance.StopSliderValueChange();
         ScoreManager.Instance.SetGameOver();
     }
 
     public void GameStartRoutine()
     {
+<<<<<<< Updated upstream
+=======
+        UIManager.Instance.SliderValueChangeing();
+        AudioManager.Instance.PlaySFX("ButtonSound");
+>>>>>>> Stashed changes
         if (isPanelOpen) return;
         AudioManager.Instance.PlaySFX("ButtonSound");
         StartCoroutine(StartGame());

@@ -41,11 +41,3 @@ MonoBehaviour:
       type: 3}
     prefabTypeName: 5
     poolCount: 4
-  - prefab: {fileID: 4637188473834278229, guid: 643df7096685b8d448d641d4fd0a8a8d,
-      type: 3}
-    prefabTypeName: BG0
-    poolCount: 2
-  - prefab: {fileID: 7886600594107201739, guid: 8b77cf050396f324790d23055fd5b3b2,
-      type: 3}
-    prefabTypeName: BG1
-    poolCount: 2

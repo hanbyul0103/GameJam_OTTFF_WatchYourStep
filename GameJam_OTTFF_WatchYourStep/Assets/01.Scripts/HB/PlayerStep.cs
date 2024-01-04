@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerStep : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerStep : MonoBehaviour
     {
         StepAction += StopAnimation;
         StepAction += PlayStepSFX;
+        StepAction += SliderValuePlus;
     }
 
     private void Awake()
@@ -39,9 +41,15 @@ public class PlayerStep : MonoBehaviour
         AudioManager.Instance.PlaySFX("WalkingSound");
     }
 
+    private void SliderValuePlus()
+    {
+        UIManager.Instance.SliderValueChangeing();
+    }
+
     private void OnDestroy()
     {
         StepAction -= StopAnimation;
         StepAction -= PlayStepSFX;
+        StepAction -= SliderValuePlus;
     }
 }

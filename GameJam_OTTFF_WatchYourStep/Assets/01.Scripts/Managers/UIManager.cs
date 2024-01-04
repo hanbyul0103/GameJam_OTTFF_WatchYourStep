@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI narration;
 
-    public Slider _musicSlider, _sfxSlider;
+    public Slider _musicSlider, _sfxSlider ,_penaltySlider ;
 
     public float dotTime = 0.5f;
 
@@ -62,8 +62,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        
         originImg = bgmButton.image.sprite;
-
         settingPanel.DOScale(0, 0);
         gameOverPanel.DOScale(0, 0);
         ingamePanel.DOScale(0, 0);
@@ -158,6 +158,7 @@ public class UIManager : MonoBehaviour
         OnInGamePanel();
         MapManager.Instance.Resetting();
         MapManager.Instance.Starting();
+        SliderValueChangeing();
     }
 
     public void OnGameOver() // 게임오버 오픈
@@ -230,5 +231,30 @@ public class UIManager : MonoBehaviour
         int rd = Random.Range(0, narrations.Length);
 
         narration.text = narrations[rd];
+    }
+
+
+
+    public void SliderValueChangeing()
+    {
+        StopCoroutine("Penalting");
+        StartCoroutine("Penalting");
+        _penaltySlider.gameObject.SetActive(true);
+        _penaltySlider.value = _penaltySlider.maxValue;
+    }
+
+    public void StopSliderValueChange()
+    {
+        StopAllCoroutines();
+        _penaltySlider.gameObject.SetActive(false);
+    }
+    IEnumerator Penalting()
+    {
+        while(_penaltySlider.value!=0)
+        {
+            _penaltySlider.value -= Time.deltaTime;
+            yield return null;
+        }
+        GameManager.Instance.GameOver();
     }
 }

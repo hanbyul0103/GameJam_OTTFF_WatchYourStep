@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
     private int rand = 0;
     private int count = 0;
     private int setting = 0;
-    private int bgmoveto = 480;
+    private int bgmoveto = 720;
     private int groundmoveTo = 0;
 
     private GameObject _currentMap;
@@ -30,7 +30,7 @@ public class MapManager : MonoBehaviour
         set
         {
             _currentMap = value;
-            _currentMap.transform.position = new Vector3(groundmoveTo, 0, -7);
+            _currentMap.transform.position = new Vector3(groundmoveTo, 0, 0);
         }
     }
 
@@ -41,7 +41,6 @@ public class MapManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
     public void RandomMap()
     {
         ++count;
@@ -60,9 +59,9 @@ public class MapManager : MonoBehaviour
             }
         }
         rand = UnityEngine.Random.Range(0, map.Count);
-        PoolManager.Instance.Pop(map[rand].name, new Vector3(groundmoveTo, 0, -7), Quaternion.identity);
+        PoolManager.Instance.Pop(map[rand].name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
 
-        groundmoveTo -= 60;
+        groundmoveTo -= 90;
 
     }
 

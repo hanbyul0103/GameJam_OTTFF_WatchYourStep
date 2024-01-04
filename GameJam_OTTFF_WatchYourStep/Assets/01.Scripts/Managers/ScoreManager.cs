@@ -57,10 +57,6 @@ public class ScoreManager : MonoBehaviour
         currentScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
     }
 
-    private void CountCombo()
-    {
-
-    }
 
     public void AddDistance()
     {
