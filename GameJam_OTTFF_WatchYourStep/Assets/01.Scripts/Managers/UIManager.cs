@@ -78,13 +78,11 @@ public class UIManager : MonoBehaviour
         {
             bgmButton.image.sprite = checkBox;
             onBGM = false;
-            Debug.Log("Off bgm");
         }
         else if (!onBGM)
         {
             bgmButton.image.sprite = originImg;
             onBGM = true;
-            Debug.Log("On bgm");
         }
 
         AudioManager.Instance.ToggleMusic();
@@ -96,13 +94,11 @@ public class UIManager : MonoBehaviour
         {
             sfxButton.image.sprite = checkBox;
             onSFX = false;
-            Debug.Log("Off sfx");
         }
         else if (!onSFX)
         {
             sfxButton.image.sprite = originImg;
             onSFX = true;
-            Debug.Log("On sfx");
         }
 
         AudioManager.Instance.ToggleSFX();
@@ -237,8 +233,6 @@ public class UIManager : MonoBehaviour
         narration.text = narrations[rd];
     }
 
-
-
     public void SliderValueChangeing()
     {
         StopCoroutine("Penalting");
@@ -254,7 +248,7 @@ public class UIManager : MonoBehaviour
         _penaltySlider.gameObject.SetActive(false);
     }
 
-    IEnumerator Penalting()
+    public IEnumerator Penalting()
     {
         while (_penaltySlider.value != 0)
         {

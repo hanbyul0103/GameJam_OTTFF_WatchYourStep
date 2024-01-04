@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -12,11 +9,10 @@ public class ScoreManager : MonoBehaviour
     private TextMeshProUGUI currentScoreText;
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI bestScoreText;
-    
+
     private int score = 0;
     private int currentScore = 0;
     private int bestScore = 0;
-    private int combo;
     private int distance = 1;
     private int multiply = 1;
 
