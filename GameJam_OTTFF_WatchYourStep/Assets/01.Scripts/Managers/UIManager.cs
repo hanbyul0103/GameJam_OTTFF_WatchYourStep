@@ -162,8 +162,6 @@ public class UIManager : MonoBehaviour
 
     public void OnGameOver() // 게임오버 오픈
     {
-        AudioManager.Instance.PlaySFX("GameOverSound");
-
         gameOverPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
         RandomNarrationText();
     }
