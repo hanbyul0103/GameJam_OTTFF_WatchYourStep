@@ -118,6 +118,7 @@ public class UIManager : MonoBehaviour
 
     public void SettingButton() // 설정창 키기
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         GameManager.Instance.isPanelOpen = true;
         startButton.gameObject.SetActive(false);
         settingPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
@@ -125,6 +126,7 @@ public class UIManager : MonoBehaviour
 
     public void XButton() // 설정창 끄기
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         GameManager.Instance.isPanelOpen = false;
         startButton.gameObject.SetActive(true);
         settingPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
@@ -160,12 +162,15 @@ public class UIManager : MonoBehaviour
 
     public void OnGameOver() // 게임오버 오픈
     {
+        AudioManager.Instance.PlaySFX("GameOverSound");
+
         gameOverPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
         RandomNarrationText();
     }
 
     public void OffGameOver() // 게임오버 끄기
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         gameOverPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
     }
 
@@ -181,6 +186,7 @@ public class UIManager : MonoBehaviour
 
     public void OnExplainPanel()
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         GameManager.Instance.isPanelOpen = true;
         startButton.gameObject.SetActive(false);
         explainPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
@@ -188,6 +194,7 @@ public class UIManager : MonoBehaviour
 
     public void OffExplainPanel()
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         GameManager.Instance.isPanelOpen = false;
         startButton.gameObject.SetActive(true);
         explainPanel.DOScale(0, dotTime).SetEase(Ease.InSine);

@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MapManager.Instance.Starting();
+        AudioManager.Instance.PlayMusic("BGMCitySound");
+        AudioManager.Instance.PlayMusic("BGMSound");
     }
 
     public void GameStart()
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStartRoutine()
     {
+        AudioManager.Instance.PlaySFX("ButtonSound");
         if (isPanelOpen) return;
         StartCoroutine(StartGame());
     }
