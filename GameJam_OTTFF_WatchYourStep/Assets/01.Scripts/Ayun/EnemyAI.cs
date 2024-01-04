@@ -29,9 +29,21 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.onEnemySpawn += Push;
+
         roamingPosition = GetRoamingPosition();
 
         randRoamingTime = Random.Range(1f, roamingDirChangeTime);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.onEnemySpawn -= Push;
+    }
+
+    private void Push()
+    {
+        PoolManager.Instance.Push("Enemy", this.gameObject);
     }
 
     private void Update()
