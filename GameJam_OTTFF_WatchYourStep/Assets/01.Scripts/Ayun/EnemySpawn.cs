@@ -1,20 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    private void OnEnable()
+    private void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            PopEnemy();
-        }
+        GameManager.Instance.onEnemySpawn += Spawn;
     }
 
-    private void PopEnemy()
+    private void OnDestroy()
+    {
+        GameManager.Instance.onEnemySpawn -= Spawn;
+    }
+
+    private void Spawn()
     {
         PoolManager.Instance.Pop("Enemy", transform);
     }

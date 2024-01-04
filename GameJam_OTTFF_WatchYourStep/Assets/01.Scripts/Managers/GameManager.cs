@@ -1,10 +1,13 @@
 using DG.Tweening.Core.Easing;
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public Action onEnemySpawn;
 
     private PlayerMovement player;
 
@@ -44,13 +47,15 @@ public class GameManager : MonoBehaviour
 
     public void GameStartRoutine()
     {
-        AudioManager.Instance.PlaySFX("ButtonSound");
         if (isPanelOpen) return;
+        AudioManager.Instance.PlaySFX("ButtonSound");
         StartCoroutine(StartGame());
     }
 
     private IEnumerator StartGame()
     {
+        // º“»Ø
+        onEnemySpawn?.Invoke();
         UIManager.Instance.OffTitlePanel();
         UIManager.Instance.OnInGamePanel();
         CameraManager.Instance.FollowingCamera();
