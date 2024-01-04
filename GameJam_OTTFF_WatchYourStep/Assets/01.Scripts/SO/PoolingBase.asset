@@ -16,7 +16,7 @@ MonoBehaviour:
   - prefab: {fileID: 5673312548730489308, guid: a74a0dab93a022c48b2c8287250eb03c,
       type: 3}
     prefabTypeName: Enemy
-    poolCount: 10
+    poolCount: 20
   - prefab: {fileID: 4793475195026812405, guid: 00e514175705f9c4c98f30efe2b2efdc,
       type: 3}
     prefabTypeName: 0

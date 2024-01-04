@@ -8,7 +8,7 @@ public class EnemySpawn : MonoBehaviour
 {
     private void OnEnable()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             PopEnemy();
         }
