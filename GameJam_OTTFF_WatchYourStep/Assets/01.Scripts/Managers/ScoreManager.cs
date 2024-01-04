@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     private PlayerStep playerStep;
-    private TextMeshProUGUI currenScoreText;
+    private TextMeshProUGUI currentScoreText;
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI bestScoreText;
     
@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
 
         playerStep = FindObjectOfType<PlayerStep>();
 
-        currenScoreText = GameObject.Find("CurrentScoretext").GetComponent<TextMeshProUGUI>();
+        currentScoreText = GameObject.Find("CurrentScoretext").GetComponent<TextMeshProUGUI>();
         scoreText = GameObject.Find("Score/ScoreText").GetComponent<TextMeshProUGUI>();
         bestScoreText = GameObject.Find("BestScore/BestScoreText").GetComponent<TextMeshProUGUI>();
     }
@@ -53,6 +53,8 @@ public class ScoreManager : MonoBehaviour
     {
         score = 0;
         currentScore = 0;
+
+        currentScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
     }
 
     private void CountCombo()
@@ -64,7 +66,7 @@ public class ScoreManager : MonoBehaviour
     {
         score += distance * multiply;
         currentScore = score;
-        currenScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
+        currentScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
     }
 
     public void CheckBestScore()

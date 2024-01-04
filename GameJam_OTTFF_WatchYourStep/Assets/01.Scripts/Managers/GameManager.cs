@@ -1,5 +1,5 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private PlayerMovement player;
 
     public bool isGameStart = false;
+    public bool isPanelOpen = false;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStartRoutine()
     {
+        if (isPanelOpen) return;
         StartCoroutine(StartGame());
     }
 

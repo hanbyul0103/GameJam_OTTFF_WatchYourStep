@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     private Button sfxButton;
     [SerializeField]
     private List<Image> titlePanelItems = new List<Image>();
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI narration;
 
     public Slider _musicSlider, _sfxSlider;
@@ -118,11 +118,15 @@ public class UIManager : MonoBehaviour
 
     public void SettingButton() // 설정창 키기
     {
+        GameManager.Instance.isPanelOpen = true;
+        startButton.gameObject.SetActive(false);
         settingPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
     }
 
     public void XButton() // 설정창 끄기
     {
+        GameManager.Instance.isPanelOpen = false;
+        startButton.gameObject.SetActive(true);
         settingPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
     }
 
@@ -134,6 +138,7 @@ public class UIManager : MonoBehaviour
     public void HomeButton() // 타이틀 화면으로 이동
     {
         CameraManager.Instance.TitleCamera();
+        ScoreManager.Instance.ResetScore();
         player.transform.position = player.playerOriginTransform.position;
         OffGameOver();
         OnTitlePanel();
@@ -145,6 +150,7 @@ public class UIManager : MonoBehaviour
     {
         CameraManager.Instance.FollowingCamera();
         GameManager.Instance.GameStart();
+        ScoreManager.Instance.ResetScore();
         player.transform.position = player.playerOriginTransform.position;
         OffGameOver();
         OnInGamePanel();
@@ -175,11 +181,15 @@ public class UIManager : MonoBehaviour
 
     public void OnExplainPanel()
     {
+        GameManager.Instance.isPanelOpen = true;
+        startButton.gameObject.SetActive(false);
         explainPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
     }
 
     public void OffExplainPanel()
     {
+        GameManager.Instance.isPanelOpen = false;
+        startButton.gameObject.SetActive(true);
         explainPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
     }
 
@@ -210,7 +220,8 @@ public class UIManager : MonoBehaviour
         string[] narrations =
             { "살려줘", "무거워", "나 먼저 갈게",
             "밍밍밍", "ㅠㅡㅠ", "너가 뭔데 날 죽여",
-            "꽥", "내가 죽었다니...", "이 나쁜 거인...", "힝...ㅠㅡㅠ" };
+            "꽥", "내가\n죽었다니...", "이 나쁜 거인...", "힝...ㅠㅡㅠ" };
+
         int rd = Random.Range(0, narrations.Length);
 
         narration.text = narrations[rd];
