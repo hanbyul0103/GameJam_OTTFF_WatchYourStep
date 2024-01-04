@@ -250,6 +250,7 @@ public class UIManager : MonoBehaviour
     public void StopSliderValueChange()
     {
         StopAllCoroutines();
+        _penaltySlider.value = _penaltySlider.maxValue;
         _penaltySlider.gameObject.SetActive(false);
     }
 
