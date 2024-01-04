@@ -15,6 +15,7 @@ public class PlayerStep : MonoBehaviour
     private void OnEnable()
     {
         StepAction += StopAnimation;
+        StepAction += PlayStepSFX;
     }
 
     private void Awake()
@@ -33,8 +34,14 @@ public class PlayerStep : MonoBehaviour
         animator.speed = 0;
     }
 
+    private void PlayStepSFX()
+    {
+        AudioManager.Instance.PlaySFX("WalkingSound");
+    }
+
     private void OnDestroy()
     {
         StepAction -= StopAnimation;
+        StepAction -= PlayStepSFX;
     }
 }

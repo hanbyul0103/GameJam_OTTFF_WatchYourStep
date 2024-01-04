@@ -67,5 +67,6 @@ public class AudioManager : MonoBehaviour
     public void SFXVolume(float volume)
     {
         sfxSource.volume = volume;
+        PlaySFX("ButtonSound");
     }
 }

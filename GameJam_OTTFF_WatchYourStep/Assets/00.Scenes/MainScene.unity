@@ -2100,7 +2100,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2245,6 +2245,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4f2a98717d1ac0e439445afb6b76a8b7, type: 3}
   - name: WalkingSound
     clip: {fileID: 8300000, guid: f0390f4f43125c34e94b6f0e85eaee29, type: 3}
+  - name: WalkingSound2
+    clip: {fileID: 8300000, guid: 4a0189a896bec6c409fb5f8d8e60b0a2, type: 3}
+  - name: ButtonSound
+    clip: {fileID: 8300000, guid: 4e9a97bca6eb52a44a1eeb6b6547b166, type: 3}
   musicSource: {fileID: 1621263690}
   sfxSource: {fileID: 1204939483}
 --- !u!1 &1260800499
@@ -2838,10 +2842,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -17608,7 +17612,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 417475999}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5997817795651150065
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17716,7 +17732,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 417475999}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5997817795670441411
 RectTransform:
   m_ObjectHideFlags: 0
