@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     private Sprite originImg;
     private PlayerMovement player;
 
+    [SerializeField] private Sprite[] miniHumanSprites;
+    private Image miniHumanImage;
+
     private bool onBGM = true;
     private bool onSFX = true;
 
@@ -58,13 +61,15 @@ public class UIManager : MonoBehaviour
         touchText = GameObject.Find("TouchText").GetComponent<TextMeshProUGUI>();
         player = FindObjectOfType<PlayerMovement>();
 
+        miniHumanImage = GameObject.Find("MiniHuman").GetComponent<Image>();
+
         titlePanelItems = titlePanel.GetComponentsInChildren<Image>().ToList();
         titlePanelItems.RemoveAt(0);
+
     }
 
     private void Start()
     {
-
         originImg = bgmButton.image.sprite;
         settingPanel.DOScale(0, 0);
         gameOverPanel.DOScale(0, 0);
@@ -161,10 +166,20 @@ public class UIManager : MonoBehaviour
         SliderValueChangeing();
     }
 
-    public void OnGameOver() // 게임오버 오픈
+    public void OnGameOver(bool isTimeOver = false) // 게임오버 오픈
     {
         gameOverPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
-        RandomNarrationText();
+
+        if (isTimeOver)
+        {
+            miniHumanImage.sprite = miniHumanSprites[0];
+            RandomText();
+        }
+        else
+        {
+            miniHumanImage.sprite = miniHumanSprites[1];
+            RandomDeadText();
+        }
     }
 
     public void OffGameOver() // 게임오버 끄기
@@ -221,12 +236,24 @@ public class UIManager : MonoBehaviour
         startButton.gameObject.SetActive(false);
     }
 
-    private void RandomNarrationText()
+    private void RandomText()
     {
         string[] narrations =
-            { "살려줘", "무거워", "나 먼저 갈게",
-            "밍밍밍", "ㅠㅡㅠ", "너가 뭔데 날 죽여",
-            "꽥", "내가\n죽었다니...", "이 나쁜 거인...", "힝...ㅠㅡㅠ" };
+            { "오잉?", "거인이 이상하네", "타임 오버래요 ㅋㅋ", "진짜 못한다 ㅋㅋ",
+            "발이 꼬였나~", "이걸 죽네", "오예!!", "ㅋㅋㅋㅋㅋㅋㅋ"};
+
+        int rd = Random.Range(0, narrations.Length);
+
+        narration.text = narrations[rd];
+    }
+
+    private void RandomDeadText()
+    {
+        string[] narrations =
+        { "살려줘", "무거워", "나 먼저\n갈게..", "ㅠㅡㅠ", "네가 뭔데\n날 죽여",
+            "꽥", "내가\n죽었다니...", "이 나쁜 거인...", "힝...ㅠㅡㅠ", "이 못된 거인아",
+            "ㅠㅡㅠ", "아야..", "너무해", "왜 밟아", "지나갈거면\n잘 좀 지나가지...", "너무 아프잖아"
+        };
 
         int rd = Random.Range(0, narrations.Length);
 
@@ -255,6 +282,6 @@ public class UIManager : MonoBehaviour
             _penaltySlider.value -= Time.deltaTime;
             yield return null;
         }
-        GameManager.Instance.GameOver();
+        GameManager.Instance.GameOver(true);
     }
 }
