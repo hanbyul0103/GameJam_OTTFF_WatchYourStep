@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStep : MonoBehaviour
@@ -7,11 +9,15 @@ public class PlayerStep : MonoBehaviour
 
     private Animator animator;
 
+    public Transform[] effectTrm;
+    private int indexnum = 0;
+
     private int screenWidth = 500;
     private int screenHeight = 800;
 
     private void OnEnable()
     {
+
         StepAction += StopAnimation;
         StepAction += PlayStepSFX;
         StepAction += SliderValuePlus;
@@ -41,6 +47,24 @@ public class PlayerStep : MonoBehaviour
     private void SliderValuePlus()
     {
         UIManager.Instance.SliderValueChangeing();
+    }
+    
+    public void LeftEffect()
+    {
+        StartCoroutine(StepEffect(1));
+    }
+
+    public void RightEffect()
+    {
+        StartCoroutine(StepEffect(0));
+    }
+
+    IEnumerator StepEffect(int indexnum)
+    {
+        GameObject effect= PoolManager.Instance.Pop("Effect", effectTrm[indexnum].position, Quaternion.Euler(-90,0,0));
+        yield return new WaitForSeconds(.5f);
+        PoolManager.Instance.Push("Effect",effect);
+        
     }
 
     private void OnDestroy()

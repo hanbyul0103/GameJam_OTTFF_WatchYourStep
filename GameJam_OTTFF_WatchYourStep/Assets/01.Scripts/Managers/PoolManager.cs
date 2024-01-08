@@ -64,7 +64,6 @@ public class PoolManager : MonoBehaviour
     }
     public GameObject Pop(string type, Transform parentTrm)
     {
-        GameObject obj = poolDic[type].Dequeue();
 
         if (poolDic[type].Count == 0)
         {
@@ -82,6 +81,7 @@ public class PoolManager : MonoBehaviour
             }
         }
         
+        GameObject obj = poolDic[type].Dequeue();
         obj.SetActive(true);
         obj.transform.SetParent(parentTrm);
         obj.transform.localPosition = Vector3.zero;
