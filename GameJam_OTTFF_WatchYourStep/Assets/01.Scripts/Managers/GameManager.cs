@@ -35,11 +35,11 @@ public class GameManager : MonoBehaviour
         isGameStart = true;
     }
 
-    public void GameOver()
+    public void GameOver(bool isTimeOver = false)
     {
         player.animator.SetBool("isGameStart", false);
         isGameStart = false;
-        UIManager.Instance.OnGameOver();
+        UIManager.Instance.OnGameOver(isTimeOver);
         UIManager.Instance.OffInGamePanel();
         UIManager.Instance.StopSliderValueChange();
         ScoreManager.Instance.SetGameOver();

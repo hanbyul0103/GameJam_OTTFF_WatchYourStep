@@ -1198,6 +1198,9 @@ MonoBehaviour:
   _sfxSlider: {fileID: 5997817795670441410}
   _penaltySlider: {fileID: 325750346}
   dotTime: 0.5
+  miniHumanSprites:
+  - {fileID: 21300000, guid: ab670fdb2114fc646998cbb798925bb3, type: 3}
+  - {fileID: 21300000, guid: d30bb263d03da3848a07998640a0c440, type: 3}
 --- !u!1 &432380143
 GameObject:
   m_ObjectHideFlags: 0
