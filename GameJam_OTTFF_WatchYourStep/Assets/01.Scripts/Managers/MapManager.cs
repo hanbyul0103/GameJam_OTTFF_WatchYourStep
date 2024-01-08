@@ -54,6 +54,7 @@ public class MapManager : MonoBehaviour
             }
         }
         rand = UnityEngine.Random.Range(0, map.Count);
+        Debug.Log(map[rand].name);
         PoolManager.Instance.Pop(map[rand].name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
 
         groundmoveTo -= 90;

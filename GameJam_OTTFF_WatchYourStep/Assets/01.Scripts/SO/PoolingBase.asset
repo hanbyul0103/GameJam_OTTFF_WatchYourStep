@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: PoolingBase
   m_EditorClassIdentifier: 
   pairs:
-  - prefab: {fileID: 5673312548730489308, guid: a74a0dab93a022c48b2c8287250eb03c,
-      type: 3}
-    prefabTypeName: Enemy
-    poolCount: 20
   - prefab: {fileID: 4793475195026812405, guid: 00e514175705f9c4c98f30efe2b2efdc,
       type: 3}
     prefabTypeName: 0
@@ -41,3 +37,11 @@ MonoBehaviour:
       type: 3}
     prefabTypeName: 5
     poolCount: 4
+  - prefab: {fileID: 6173505904202872182, guid: efa09eb266916a3478904c343795a7ea,
+      type: 3}
+    prefabTypeName: Effect
+    poolCount: 2
+  - prefab: {fileID: 5673312548730489308, guid: a74a0dab93a022c48b2c8287250eb03c,
+      type: 3}
+    prefabTypeName: Enemy
+    poolCount: 10

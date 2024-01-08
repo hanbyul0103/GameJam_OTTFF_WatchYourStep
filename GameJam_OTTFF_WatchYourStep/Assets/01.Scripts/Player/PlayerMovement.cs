@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerOriginTransform;
 
 
-    private float movementSpeed = 20.0f;
+    public float movementSpeed = 20.0f;
 
-    private void OnEnable()
+    private void Start()
     {
         playerStep.StepAction += Stop;
     }
@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isGameStart", true);
             animator.speed = 1.5f;
-            movementSpeed = 20.0f;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             animator.speed = 0.3f;
+            movementSpeed = 10.0f;
         }
 
         transform.position += Vector3.left * movementSpeed * Time.deltaTime;
@@ -43,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
     public void Stop()
     {
         movementSpeed = 0;
+    }
+
+    public void SpeedUP()
+    {
+        movementSpeed = 20.0f;
     }
 
     private void OnDestroy()
