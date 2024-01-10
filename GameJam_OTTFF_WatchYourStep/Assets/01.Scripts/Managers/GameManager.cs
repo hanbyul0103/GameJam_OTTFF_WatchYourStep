@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     private void GameStart()
     {
         isGameStart = true;
-        Debug.Log(isGameStart);
     }
 
     public void GameOver(bool isTimeOver = false)

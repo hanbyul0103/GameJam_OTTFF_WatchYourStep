@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
     public void Stop()
     {
         movementSpeed = 0;
-        Debug.Log(movementSpeed);
     }
 
     public void SpeedUP()
