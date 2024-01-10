@@ -156,7 +156,7 @@ public class UIManager : MonoBehaviour
         onEnemySpawn?.Invoke();
 
         CameraManager.Instance.FollowingCamera();
-        GameManager.Instance.GameStart();
+        GameManager.Instance.InvokeGameStart();
         ScoreManager.Instance.ResetScore();
         player.transform.position = player.playerOriginTransform.position;
         OffGameOver();

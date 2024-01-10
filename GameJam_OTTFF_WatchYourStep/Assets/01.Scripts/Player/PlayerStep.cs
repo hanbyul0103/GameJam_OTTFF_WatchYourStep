@@ -17,7 +17,6 @@ public class PlayerStep : MonoBehaviour
 
     private void OnEnable()
     {
-
         StepAction += StopAnimation;
         StepAction += PlayStepSFX;
         StepAction += SliderValuePlus;

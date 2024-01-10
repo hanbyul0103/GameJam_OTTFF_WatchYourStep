@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         playerOriginTransform = GameObject.Find("PlayerOriginPosition").GetComponent<Transform>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!GameManager.Instance.isGameStart) return;
 
@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public void Stop()
     {
         movementSpeed = 0;
+        Debug.Log(movementSpeed);
     }
 
     public void SpeedUP()

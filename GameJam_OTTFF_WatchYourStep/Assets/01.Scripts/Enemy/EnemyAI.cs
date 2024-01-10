@@ -76,9 +76,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Vector3.down, out hit, maxDistance))
         {
-            Debug.Log("Raycast hit: " + hit.transform.name);
             transform.parent = hit.transform.parent;
-            Debug.Log("New parent: " + transform.parent.name);
         }
     }
 
