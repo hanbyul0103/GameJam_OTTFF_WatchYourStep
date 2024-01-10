@@ -64,7 +64,6 @@ public class PlayerStep : MonoBehaviour
         GameObject effect= PoolManager.Instance.Pop("Effect", effectTrm[indexnum].position, Quaternion.Euler(-90,0,0));
         yield return new WaitForSeconds(.5f);
         PoolManager.Instance.Push("Effect",effect);
-        
     }
 
     private void OnDestroy()
