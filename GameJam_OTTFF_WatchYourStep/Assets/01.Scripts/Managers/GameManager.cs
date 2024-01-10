@@ -30,7 +30,12 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlayMusic("BGMSound");
     }
 
-    public void GameStart()
+    public void InvokeGameStart()
+    {
+        Invoke("GameStart", 0.5f);
+    }
+
+    private void GameStart()
     {
         isGameStart = true;
     }

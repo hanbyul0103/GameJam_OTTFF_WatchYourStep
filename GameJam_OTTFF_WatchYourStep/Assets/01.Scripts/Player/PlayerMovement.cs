@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         playerOriginTransform = GameObject.Find("PlayerOriginPosition").GetComponent<Transform>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!GameManager.Instance.isGameStart) return;
 
