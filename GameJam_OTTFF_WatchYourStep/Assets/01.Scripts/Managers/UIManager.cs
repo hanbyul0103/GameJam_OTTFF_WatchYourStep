@@ -65,7 +65,6 @@ public class UIManager : MonoBehaviour
 
         titlePanelItems = titlePanel.GetComponentsInChildren<Image>().ToList();
         titlePanelItems.RemoveAt(0);
-
     }
 
     private void Start()
@@ -75,6 +74,18 @@ public class UIManager : MonoBehaviour
         gameOverPanel.DOScale(0, 0);
         ingamePanel.DOScale(0, 0);
         explainPanel.DOScale(0, 0);
+    }
+
+    private void OnPanel(RectTransform panelName)
+    {
+        panelName.DOScale(1, dotTime).SetEase(Ease.InSine);
+        GameManager.Instance.isPanelOpen = true;
+    }
+
+    private void OffPanel(RectTransform panelName)
+    {
+        panelName.DOScale(0, dotTime).SetEase(Ease.InSine);
+        GameManager.Instance.isPanelOpen = false;
     }
 
     public void ToggleMusic()
@@ -119,99 +130,88 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.SFXVolume(_sfxSlider.value);
     }
 
-    public void SettingButton() // ¼³Á¤Ã¢ Å°±â
-    {
-        AudioManager.Instance.PlaySFX("ButtonSound");
-        GameManager.Instance.isPanelOpen = true;
-        startButton.gameObject.SetActive(false);
-        settingPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
-    }
-
-    public void XButton() // ¼³Á¤Ã¢ ²ô±â
-    {
-        AudioManager.Instance.PlaySFX("ButtonSound");
-        GameManager.Instance.isPanelOpen = false;
-        startButton.gameObject.SetActive(true);
-        settingPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
-    }
-
-    public void ExitButton() // °ÔÀÓ ²ô±â
+    public void ExitButton() // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         Application.Quit();
     }
 
-    public void HomeButton() // Å¸ÀÌÆ² È­¸éÀ¸·Î ÀÌµ¿
+    public void GameStartButton() {
+        GameManager.Instance.GameStart();
+        MapManager.Instance.Starting();
+        OffTitlePanel();
+        OnInGamePanel();
+    }
+
+    public void HomeButton() // Å¸ï¿½ï¿½Æ² È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     {
         CameraManager.Instance.TitleCamera();
         ScoreManager.Instance.ResetScore();
-        player.transform.position = player.playerOriginTransform.position;
+        GameManager.Instance.ResetGame();
+        MapManager.Instance.TitleViewMap();
         OffGameOver();
         OnTitlePanel();
-        MapManager.Instance.Resetting();
-        MapManager.Instance.Starting();
     }
 
-    public void RestartButton() // °ÔÀÓ Àç½ÃÀÛ
+    public void RestartButton() // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     {
+<<<<<<< Updated upstream
         onEnemySpawn?.Invoke();
 
         CameraManager.Instance.FollowingCamera();
         GameManager.Instance.InvokeGameStart();
+=======
+        GameManager.Instance.ResetGame();
+        GameManager.Instance.GameStart();
+>>>>>>> Stashed changes
         ScoreManager.Instance.ResetScore();
-        player.transform.position = player.playerOriginTransform.position;
+        MapManager.Instance.Starting();
         OffGameOver();
         OnInGamePanel();
-        MapManager.Instance.Resetting();
-        MapManager.Instance.Starting();
         SliderValueChangeing();
     }
-
-    public void OnGameOver(bool isTimeOver = false) // °ÔÀÓ¿À¹ö ¿ÀÇÂ
-    {
-        gameOverPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
-
-        if (isTimeOver)
-        {
-            miniHumanImage.sprite = miniHumanSprites[0];
-            RandomText();
-        }
-        else
-        {
-            miniHumanImage.sprite = miniHumanSprites[1];
-            RandomDeadText();
-        }
-    }
-
-    public void OffGameOver() // °ÔÀÓ¿À¹ö ²ô±â
+    
+    public void OnSettingPanel() // ï¿½ï¿½ï¿½ï¿½Ã¢ Å°ï¿½ï¿½
     {
         AudioManager.Instance.PlaySFX("ButtonSound");
-        gameOverPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
+        startButton.gameObject.SetActive(false);
+        OnPanel(settingPanel);
+    }
+
+    public void OffSettingPanel() // ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½
+    {
+        AudioManager.Instance.PlaySFX("ButtonSound");
+        startButton.gameObject.SetActive(true);
+        OffPanel(settingPanel);
+    }
+
+    public void OffGameOver() // ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    {
+        AudioManager.Instance.PlaySFX("ButtonSound");
+        OffPanel(gameOverPanel);
     }
 
     public void OnInGamePanel()
     {
-        ingamePanel.DOScale(1, dotTime).SetEase(Ease.InSine);
+        OnPanel(ingamePanel);
     }
 
     public void OffInGamePanel()
     {
-        ingamePanel.DOScale(0, dotTime).SetEase(Ease.InSine);
+        OffPanel(ingamePanel);
     }
 
     public void OnExplainPanel()
     {
         AudioManager.Instance.PlaySFX("ButtonSound");
-        GameManager.Instance.isPanelOpen = true;
         startButton.gameObject.SetActive(false);
-        explainPanel.DOScale(1, dotTime).SetEase(Ease.InSine);
+        OnPanel(explainPanel);
     }
 
     public void OffExplainPanel()
     {
         AudioManager.Instance.PlaySFX("ButtonSound");
-        GameManager.Instance.isPanelOpen = false;
         startButton.gameObject.SetActive(true);
-        explainPanel.DOScale(0, dotTime).SetEase(Ease.InSine);
+        OffPanel(explainPanel);
     }
 
     public void OnTitlePanel()
@@ -222,7 +222,7 @@ public class UIManager : MonoBehaviour
         }
 
         touchText.DOFade(1, 1);
-        startButton.gameObject.SetActive(true);
+        OnPanel(titlePanel);
     }
 
     public void OffTitlePanel()
@@ -233,46 +233,52 @@ public class UIManager : MonoBehaviour
         }
 
         touchText.DOFade(0, 1);
-        startButton.gameObject.SetActive(false);
+        OffPanel(titlePanel);
     }
 
-    private void RandomText()
+    public void TimeOverPanel()
     {
+        miniHumanImage.sprite = miniHumanSprites[0];
+
         string[] narrations =
-            { "¿ÀÀ×?", "°ÅÀÎÀÌ ÀÌ»óÇÏ³×", "Å¸ÀÓ ¿À¹ö·¡¿ä ¤»¤»", "ÁøÂ¥ ¸øÇÑ´Ù ¤»¤»",
-            "¹ßÀÌ ²¿¿´³ª~", "ÀÌ°É Á×³×", "¿À¿¹!!", "¤»¤»¤»¤»¤»¤»¤»"};
+            { "ï¿½ï¿½ï¿½ï¿½?", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ï³ï¿½", "Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½Ñ´ï¿½ ï¿½ï¿½ï¿½ï¿½",
+            "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~", "ï¿½Ì°ï¿½ ï¿½×³ï¿½", "ï¿½ï¿½ï¿½ï¿½!!", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"};
 
         int rd = Random.Range(0, narrations.Length);
 
         narration.text = narrations[rd];
+
+        OnPanel(gameOverPanel);
     }
 
-    private void RandomDeadText()
+    public void GameOverPanel()
     {
+        miniHumanImage.sprite = miniHumanSprites[1];
+
         string[] narrations =
+<<<<<<< Updated upstream
         { "»ì·ÁÁà", "¹«°Å¿ö", "³ª ¸ÕÀú °¥°Ô..", "¤Ð¤Ñ¤Ð", "³×°¡ ¹ºµ¥\n³¯ Á×¿©",
             "²Ð", "³»°¡ Á×¾ú´Ù´Ï...", "ÀÌ ³ª»Û °ÅÀÎ...", "Èþ...¤Ð¤Ñ¤Ð", "ÀÌ ¸øµÈ °ÅÀÎ¾Æ",
             "¾Æ¾ß..", "³Ê¹«ÇØ", "¿Ö ¹â¾Æ", "Áö³ª°¥°Å¸é\nÀß Á» Áö³ª°¡Áö...", "³Ê¹« ¾ÆÇÁÀÝ¾Æ"
+=======
+        { "ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½Å¿ï¿½", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½\nï¿½ï¿½ï¿½ï¿½..", "ï¿½Ð¤Ñ¤ï¿½", "ï¿½×°ï¿½ ï¿½ï¿½ï¿½ï¿½\nï¿½ï¿½ ï¿½×¿ï¿½",
+            "ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½\nï¿½×¾ï¿½ï¿½Ù´ï¿½...", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½...", "ï¿½ï¿½...ï¿½Ð¤Ñ¤ï¿½", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¾ï¿½",
+            "ï¿½Ð¤Ñ¤ï¿½", "ï¿½Æ¾ï¿½..", "ï¿½Ê¹ï¿½ï¿½ï¿½", "ï¿½ï¿½ ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½\nï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...", "ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ý¾ï¿½"
+>>>>>>> Stashed changes
         };
 
         int rd = Random.Range(0, narrations.Length);
 
         narration.text = narrations[rd];
+
+        OnPanel(gameOverPanel);
     }
 
     public void SliderValueChangeing()
     {
         StopCoroutine("Penalting");
+        _penaltySlider.value = _penaltySlider.maxValue;
         StartCoroutine("Penalting");
-        _penaltySlider.gameObject.SetActive(true);
-        _penaltySlider.value = _penaltySlider.maxValue;
-    }
-
-    public void StopSliderValueChange()
-    {
-        StopAllCoroutines();
-        _penaltySlider.value = _penaltySlider.maxValue;
-        _penaltySlider.gameObject.SetActive(false);
     }
 
     public IEnumerator Penalting()
@@ -282,6 +288,8 @@ public class UIManager : MonoBehaviour
             _penaltySlider.value -= Time.deltaTime;
             yield return null;
         }
-        GameManager.Instance.GameOver(true);
+
+        GameManager.Instance.GameOver();
+        TimeOverPanel();
     }
 }

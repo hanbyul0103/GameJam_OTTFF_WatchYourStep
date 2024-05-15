@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStep : MonoBehaviour
@@ -10,7 +9,6 @@ public class PlayerStep : MonoBehaviour
     private Animator animator;
 
     public Transform[] effectTrm;
-    private int indexnum = 0;
 
     private int screenWidth = 500;
     private int screenHeight = 800;
@@ -47,7 +45,7 @@ public class PlayerStep : MonoBehaviour
     {
         UIManager.Instance.SliderValueChangeing();
     }
-    
+
     public void LeftEffect()
     {
         StartCoroutine(StepEffect(1));
@@ -60,9 +58,14 @@ public class PlayerStep : MonoBehaviour
 
     IEnumerator StepEffect(int indexnum)
     {
-        GameObject effect= PoolManager.Instance.Pop("Effect", effectTrm[indexnum].position, Quaternion.Euler(-90,0,0));
+        GameObject effect = PoolManager.Instance.Pop("Effect", effectTrm[indexnum].position, Quaternion.Euler(-90, 0, 0));
         yield return new WaitForSeconds(.5f);
+<<<<<<< Updated upstream
         PoolManager.Instance.Push("Effect",effect);
+=======
+        PoolManager.Instance.Push("Effect", effect);
+
+>>>>>>> Stashed changes
     }
 
     private void OnDestroy()

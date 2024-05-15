@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 
     public Action onEnemySpawn;
 
-    private PlayerMovement player;
-
+    private PlayerMovement player;     
+    // private EnemySpawner enemySpawner;
+   
     public bool isGameStart = false;
     public bool isPanelOpen = false;
 
@@ -25,47 +26,36 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        MapManager.Instance.Starting();
-        AudioManager.Instance.PlayMusic("BGMCitySound");
         AudioManager.Instance.PlayMusic("BGMSound");
     }
 
+<<<<<<< Updated upstream
     public void InvokeGameStart()
     {
         Invoke("GameStart", 0.5f);
     }
 
     private void GameStart()
+=======
+    public void GameStart() 
+>>>>>>> Stashed changes
     {
+        if(isPanelOpen || isGameStart) return;
         isGameStart = true;
+        CameraManager.Instance.IngameCamera();
+        player.animator.SetBool("isGameStart", true);
+        /*enemySpawner.Spawn();*/ // 수정
     }
 
-    public void GameOver(bool isTimeOver = false)
+    public void GameOver()
     {
-        player.animator.SetBool("isGameStart", false);
         isGameStart = false;
-        UIManager.Instance.OnGameOver(isTimeOver);
-        UIManager.Instance.OffInGamePanel();
-        UIManager.Instance.StopSliderValueChange();
-        ScoreManager.Instance.SetGameOver();
+	    player.animator.SetBool("isGameStart", false);
     }
 
-    public void GameStartRoutine()
-    {
-        UIManager.Instance.SliderValueChangeing();
-        if (isPanelOpen) return;
-        AudioManager.Instance.PlaySFX("ButtonSound");
-        StartCoroutine(StartGame());
-    }
-
-    private IEnumerator StartGame()
-    {
-        // 소환
-        onEnemySpawn?.Invoke();
-        UIManager.Instance.OffTitlePanel();
-        UIManager.Instance.OnInGamePanel();
-        CameraManager.Instance.FollowingCamera();
-        yield return new WaitForSeconds(0.3f);
-        isGameStart = true;
+    public void ResetGame() {
+        CameraManager.Instance.TitleCamera();
+        player.transform.position = player.playerOriginTransform.position;
+        /*enemySpawner.Despawn();*/ // 수정
     }
 }
