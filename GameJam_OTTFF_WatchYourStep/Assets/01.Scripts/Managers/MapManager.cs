@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -16,6 +17,8 @@ public class MapManager : MonoBehaviour
     private int setting = 0;
     private int bgmoveto = 720;
     private int groundmoveTo = 0;
+    private Vector3 backMap1Position;
+    private Vector3 backMap2Position;
 
     private void Awake()
     {
@@ -25,6 +28,15 @@ public class MapManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+<<<<<<< Updated upstream
+=======
+    private void Start()
+    {
+        backMap1Position = backMap[0].transform.position;
+        backMap2Position = backMap[1].transform.position;
+    }
+
+>>>>>>> Stashed changes
     public void RandomMap()
     {
         ++count;
@@ -58,6 +70,9 @@ public class MapManager : MonoBehaviour
             if (activemaps[i].activeInHierarchy == true)
                 PoolManager.Instance.Push(activemaps[i].name, activemaps[i]);
         }
+
+        backMap[0].position = backMap1Position;
+        backMap[1].position = backMap2Position;
     }
 
     private void MapInstantiate()

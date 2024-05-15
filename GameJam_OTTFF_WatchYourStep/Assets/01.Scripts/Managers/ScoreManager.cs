@@ -42,7 +42,14 @@ public class ScoreManager : MonoBehaviour
     public void ResetScore()
     {
         currentScore = 0;
+<<<<<<< Updated upstream
         CurrentScoreTextUpdate();
+=======
+
+        currentScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
+
+        CheckBestScore();
+>>>>>>> Stashed changes
     }
 
 
@@ -57,8 +64,9 @@ public class ScoreManager : MonoBehaviour
         if (currentScore > bestScore)
         {
             PlayerPrefs.SetInt("BestScore", currentScore);
-            bestScore = PlayerPrefs.GetInt("BestScore");
         }
+
+        bestScore = PlayerPrefs.GetInt("BestScore");
     }
 
     public void SetGameOver()
