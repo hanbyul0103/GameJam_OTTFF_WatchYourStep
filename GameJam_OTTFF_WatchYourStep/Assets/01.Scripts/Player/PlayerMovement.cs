@@ -23,21 +23,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!GameManager.Instance.isGameStart) return;
-
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.Instance.isGameStart)
         {
-            animator.SetBool("isGameStart", true);
-            animator.speed = 1.5f;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                animator.SetBool("isGameStart", true);
+                animator.speed = 1.5f;
+            }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            animator.speed = 0.3f;
-            movementSpeed = 10.0f;
-        }
+            if (Input.GetMouseButtonUp(0))
+            {
+                animator.speed = 0.3f;
+                movementSpeed = 10.0f;
+            }
 
-        transform.position += Vector3.left * movementSpeed * Time.deltaTime;
+            transform.position += Vector3.left * movementSpeed * Time.deltaTime;
+        }
     }
 
     public void Stop()
