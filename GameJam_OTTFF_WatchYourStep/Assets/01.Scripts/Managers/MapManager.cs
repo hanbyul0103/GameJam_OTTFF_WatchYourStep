@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -16,18 +17,8 @@ public class MapManager : MonoBehaviour
     private int setting = 0;
     private int bgmoveto = 720;
     private int groundmoveTo = 0;
-
-    private GameObject _currentMap;
-
-    public GameObject CurrentMap
-    {
-        get => _currentMap;
-        set
-        {
-            _currentMap = value;
-            _currentMap.transform.position = new Vector3(groundmoveTo, 0, 0);
-        }
-    }
+    private Vector3 backMap1Position;
+    private Vector3 backMap2Position;
 
     private void Awake()
     {
@@ -36,41 +27,40 @@ public class MapManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
+<<<<<<< Updated upstream
+=======
+    private void Start()
+    {
+        backMap1Position = backMap[0].transform.position;
+        backMap2Position = backMap[1].transform.position;
+    }
+
+>>>>>>> Stashed changes
     public void RandomMap()
     {
         ++count;
         if (count == 4)
         {
             count = 0;
-            if (setting == 0)
-            {
-                backMap[setting].position -= new Vector3(bgmoveto, 0, 0);
-                ++setting;
-            }
-            else if (setting == 1)
-            {
-                backMap[setting].position -= new Vector3(bgmoveto, 0, 0);
-                --setting;
-            }
+
+            backMap[setting].position -= new Vector3(bgmoveto, 0, 0);
+
+            setting = setting == 0 ? ++setting : --setting;
         }
-        rand = UnityEngine.Random.Range(0, map.Count);
-        Debug.Log(map[rand].name);
-        PoolManager.Instance.Pop(map[rand].name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
-
-        groundmoveTo -= 90;
-
+        MapInstantiate();
     }
 
     public void Starting()
     {
+        Resetting();
         groundmoveTo = -15;
         for (int i = 0; i < map.Count; i++)
         {
-            rand = UnityEngine.Random.Range(0, map.Count);
-            PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
-            groundmoveTo -= 90;
+            MapInstantiate();
         }
     }
+
     public void Resetting()
     {
         activemaps = GameObject.FindGameObjectsWithTag("Map");
@@ -79,6 +69,28 @@ public class MapManager : MonoBehaviour
         {
             if (activemaps[i].activeInHierarchy == true)
                 PoolManager.Instance.Push(activemaps[i].name, activemaps[i]);
+        }
+
+        backMap[0].position = backMap1Position;
+        backMap[1].position = backMap2Position;
+    }
+
+    private void MapInstantiate()
+    {
+        rand = Random.Range(0, map.Count);
+        PoolManager.Instance.Pop(map[rand].gameObject.name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
+        groundmoveTo -= 90;
+    }
+
+
+    public void TitleViewMap()
+    {
+        Resetting();
+        groundmoveTo = -15;
+        for (int i = 0; i < map.Count; ++i)
+        {
+            PoolManager.Instance.Pop(map[i].gameObject.name, new Vector3(groundmoveTo, 0, 0), Quaternion.identity);
+            groundmoveTo -= 90;
         }
     }
 }

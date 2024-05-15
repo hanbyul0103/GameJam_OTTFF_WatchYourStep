@@ -24,7 +24,7 @@ public class CameraManager : MonoBehaviour
         followingCamera.Priority = 1;
     }
 
-    public void FollowingCamera()
+    public void IngameCamera()
     {
         titleCamera.Priority = 1;
         followingCamera.Priority = 2;

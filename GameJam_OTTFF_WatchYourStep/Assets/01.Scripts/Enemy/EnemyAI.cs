@@ -11,7 +11,6 @@ public class EnemyAI : MonoBehaviour
 
     public Action<Vector3> onMovingPosition;
 
-    [SerializeField] private LayerMask gameobjectLayer;
     [SerializeField] private float roamingDirChangeTime = 5f;
     private float randRoamingTime;
 
@@ -43,28 +42,16 @@ public class EnemyAI : MonoBehaviour
         PoolManager.Instance.Push("Enemy", this.gameObject);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (currentState == State.Death) return;
 
         Roaming();
     }
-
-    //private void RangeCheack()
-    //{
-    //    Collider[] colliders = Physics.OverlapSphere(transform.position + new Vector3(0, 1, 0), sphereRadius);
-
-    //    if (colliders != null)
-    //    {
-    //        foreach (Collider collider in colliders)
-    //        {
-    //            if (collider.gameObject.tag == "Enemy")
-    //            {
-    //                roamingPosition = collider.gameObject.transform.position - transform.position;
-    //            }
-    //        }
-    //    }
-    //}
+    private void LateUpdate()
+    {
+        EnemyParentChange();
+    }
 
     private void Roaming()
     {
@@ -82,6 +69,14 @@ public class EnemyAI : MonoBehaviour
                 return;
 
             roamingPosition = GetRoamingPosition();
+        }
+    }
+
+    private void EnemyParentChange() // ¹Ø¿¡ ´ê¾ÆÀÖ´Â ¸ÊÀ¸·Î ºÎ¸ð º¯°æ
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, maxDistance))
+        {
+            transform.parent = hit.transform.parent;
         }
     }
 

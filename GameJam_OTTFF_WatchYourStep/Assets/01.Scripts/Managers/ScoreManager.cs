@@ -10,11 +10,9 @@ public class ScoreManager : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI bestScoreText;
 
-    private int score = 0;
     private int currentScore = 0;
     private int bestScore = 0;
     private int distance = 1;
-    private int multiply = 1;
 
     private void OnEnable()
     {
@@ -24,14 +22,10 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
 
         else
-        {
             Destroy(gameObject);
-        }
 
         playerStep = FindObjectOfType<PlayerStep>();
 
@@ -47,18 +41,22 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScore()
     {
-        score = 0;
         currentScore = 0;
+<<<<<<< Updated upstream
+        CurrentScoreTextUpdate();
+=======
 
         currentScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
+
+        CheckBestScore();
+>>>>>>> Stashed changes
     }
 
 
     public void AddDistance()
     {
-        score += distance * multiply;
-        currentScore = score;
-        currentScoreText.text = $"Step  :  {currentScore.ToString("D3")}";
+        currentScore += distance;
+        CurrentScoreTextUpdate();
     }
 
     public void CheckBestScore()
@@ -66,8 +64,9 @@ public class ScoreManager : MonoBehaviour
         if (currentScore > bestScore)
         {
             PlayerPrefs.SetInt("BestScore", currentScore);
-            bestScore = PlayerPrefs.GetInt("BestScore");
         }
+
+        bestScore = PlayerPrefs.GetInt("BestScore");
     }
 
     public void SetGameOver()
@@ -75,6 +74,11 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = currentScore.ToString();
         CheckBestScore();
         bestScoreText.text = bestScore.ToString();
+    }
+
+    public void CurrentScoreTextUpdate()
+    {
+        currentScoreText.text = $"Step  :  {currentScore.ToString("D2")}";
     }
 
     private void OnDestroy()
